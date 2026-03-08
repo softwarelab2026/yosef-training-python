@@ -1,0 +1,43 @@
+"""
+age = 19
+if age == 18:
+    print("cangratulations")
+elif age < 18:
+    print("you are yung")
+elif age > 18:
+    print("we love old people")
+
+
+prev1 = 1
+prev2 = 1
+
+print(prev1)
+print(prev2)
+
+while True:
+    current = prev1 + prev2
+    if current > 10000:
+        break
+
+    print(current)
+
+    prev1 = prev2
+    prev2 = current
+
+
+for i in range(41):
+    print(i)
+
+
+for i in range(101):
+    if i % 7 == 0 or (i % 10 == 7 or i // 10 % 10 == 7):
+        print(i)
+
+
+for i in range(51):
+    if i % 10 == 0:
+        print(i // 10)
+    else:
+        print(i / 10)
+"""
+
