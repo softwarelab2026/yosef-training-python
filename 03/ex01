@@ -33,12 +33,14 @@ for i in range(101):
     if i % 7 == 0 or (i % 10 == 7 or i // 10 == 7):
         print(i)
 
+"""
 
 for i in range(51):
     if i % 10 == 0:
         print(i // 10)
+        print()
     else:
-        print(i / 10)
+        print(i / 10, end=",")
 
-"""
+
 
