@@ -4,8 +4,6 @@ def sum_of_number(number):
         total += number % 10
         number //= 10
     return total
-    #3print(f"{number[0]},{number[1]},{number[2]},{number[3]},{number[4]}")
-
     
 def print_number_details():
     number = input("please eneter 5 digit number: ")
