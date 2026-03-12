@@ -1,3 +1,3 @@
 def beep(string: str) -> str:
-    return f"{string} beep"
+    return f"{string}beep"
 print(beep("hello"))
