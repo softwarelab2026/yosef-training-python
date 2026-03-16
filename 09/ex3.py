@@ -49,34 +49,26 @@ def download_images(img_urls, dest_dir):
   Creates the directory if necessary.
   """
   try:
-     if not os.path.isdir(dest_dir):
-        os.mkdir(r"/home/yosef/clones/yosef-training-python/09/images")
-        DIRETORY_NAME = r"/home/yosef/clones/yosef-training-python/09/images"
-      
-      with open("index.html", 'w') as html_file:
-        image_number = 1
-        file_name = f"img{image_number}"
+    if not os.path.isdir(dest_dir):
+      os.mkdir(dest_dir)
 
-        for url in img_urls:
-           
-           with urllib.request.urlopen(url) as response:
+    with open(f"{dest_dir}/index.html", "w") as html_file:
+      image_number = 0
+
+      for url in img_urls:
+        file_name = f"img{image_number}.jpg"
+
+        with urllib.request.urlopen(url) as response:
             image = response.read()
 
-            with open(file_name, 'wb') as output_file:
-              output_file.write(image)
-              html_file.write(f'<img src="{file_name}>"\n')
-
-              image_number += 1
-              
-            
-
-
-
-           
-
-
+        with open(f"{dest_dir}/{file_name}", "wb") as output_file:
+          output_file.write(image)
+          html_file.write(f'<img src="{file_name}">\n')
+          image_number += 1
+    
   except Exception as msg:
      return msg
+ 
   
 
 def main():
