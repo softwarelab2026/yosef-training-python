@@ -26,10 +26,11 @@ player_image = pygame.image.load('pink_plane.png').convert()
 player_image = pygame.transform.scale(player_image, (50, 50))
 player_image.set_colorkey(PINK)
 
-pygame.mouse.set_visible(False)
+#pygame.mouse.set_visible(False)
 
 
-mouse_pos_list = []
+
+screen.blit(img, (0, 0))
 finish = False
 while not finish:
     for event in pygame.event.get():
@@ -37,13 +38,9 @@ while not finish:
             finish = True
         elif event.type == pygame.MOUSEBUTTONDOWN \
             and event.button == LEFT:
-            mouse_pos_list.append(pygame.mouse.get_pos())
-
-    screen.blit(img, (0, 0))
-    screen.blit(player_image, [220, 300])
-   
+            screen.blit(player_image, pygame.mouse.get_pos())
 
     clock.tick(REFRESH_RATE)
     pygame.display.flip()
-
+    
 pygame.quit()
