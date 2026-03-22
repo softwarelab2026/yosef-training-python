@@ -1,0 +1,17 @@
+# Media files
+*.mp3
+*.jpg
+*.jpeg
+*.png
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Random files
+ainv
+shared
+alice.txt
