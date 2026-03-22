@@ -63,8 +63,8 @@ def download_images(img_urls, dest_dir):
 
         with open(f"{dest_dir}/{file_name}", "wb") as output_file:
           output_file.write(image)
-          html_file.write(f'<img src="{file_name}">\n')
-          image_number += 1
+        html_file.write(f'<img src="{file_name}">\n')
+        image_number += 1
     
   except Exception as msg:
      return msg
