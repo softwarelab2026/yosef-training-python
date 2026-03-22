@@ -1,8 +1,7 @@
 import sys, os
 
-exercise_file = sys.argv[1]
-solution_file = sys.argv[2]
-Math_operations = ('+', '-', '*', '//')
+MATH_OPERATIONS = ('+', '-', '*', '//')
+
 
 
 def valid_files(file_1: str) -> bool:
@@ -11,27 +10,27 @@ def valid_files(file_1: str) -> bool:
     return True
 
 
-def valid_exercise(expression: list, line_number: int):
+def valid_exercise(expression: list[str]):
     if len(expression) != 3:
-        return f"line {line_number}: not valid exrcise"
+        return  "not valid exrcise"
 
     first_number = expression[0]
     operator = expression[1]
     second_number = expression[2]
 
     if not first_number.isdigit() or not second_number.isdigit():
-        return f"line {line_number}: is not a digit"
+        return "is not a digit"
 
     if operator == '//' and second_number == '0':
-        return f"line {line_number}: division by zero"
+        return "division by zero"
 
-    if operator not in Math_operations:
-        return f"line {line_number}: not valid math operation"
+    if operator not in MATH_OPERATIONS:
+        return "not valid math operation"
 
     return None
 
 
-def calculate(expression):
+def calculate(expression:list[str]) -> int:
     first_number = int(expression[0])
     operator = expression[1]
     second_number = int(expression[2])
@@ -46,31 +45,35 @@ def calculate(expression):
         return first_number // second_number
 
 
-if not valid_files(exercise_file):
-    print("not valid file")
-    sys.exit()
-
-
-with open(exercise_file, 'r') as exercise_file:
-
-    line_num = 1
+def main():
+    exercise_file = sys.argv[1]
+    solution_file = sys.argv[2]
     
-    with open(solution_file, 'w') as solution_file:
 
-        for line in exercise_file:
+    if not valid_files(exercise_file):
+        print("not valid file")
+        sys.exit()
 
-            line = line.split()
-            error = valid_exercise(line, line_num)
 
-            if error:
-                solution_file.write(error + "\n")
+    with open(exercise_file, 'r') as exercise_fo:
+        
+        with open(solution_file, 'w') as solution_fo:
 
-            else:
-                solution = calculate(line)
-                line.append("=")
-                line.append(str(solution))
+            for line_num, line in enumerate(exercise_fo, start=1):
 
-                result_line = " ".join(line)
-                solution_file.write(result_line + "\n")
+                line_splitted = line.split()
+                error = valid_exercise(line_splitted)
 
-            line_num += 1
+                if error:
+                    solution_fo.write(f"line: {line_num} " + error + "\n")
+
+                else:
+                    solution = calculate(line_splitted)
+                    line_splitted.append("=")
+                    line_splitted.append(str(solution))
+
+                    result_line = " ".join(line_splitted)
+                    solution_fo.write(result_line + "\n")
+
+if __name__ == "__main__":
+    main()
